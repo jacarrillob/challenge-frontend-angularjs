@@ -1,0 +1,54 @@
+{
+  "name": "challenge-angularjs",
+  "version": "0.0.1",
+  "keywords": [],
+  "author": "carecloud",
+  "contributors": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "jest ./test",
+    "test:coverage": "jest ./test --coverage",
+    "lint:code": "eslint --ext .js src",
+    "lint:code:fix": "eslint --ext .js --fix src",
+    "lint:style": "stylelint src/*.css",
+    "lint:style:fix": "stylelint --fix src/*.css",
+    "dev": "webpack serve --mode=development --progress",
+    "build": "webpack --mode=production --progress",
+    "start": "http-server ./build -o -b -g"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "@types/node": "^17.0.22",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-angularjs-annotate": "^0.10.0",
+    "css-loader": "^6.5.1",
+    "dotenv": "^16.0.0",
+    "dotenv-webpack": "^7.0.3",
+    "eslint": "^8.26.0",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "http-server": "^14.1.1",
+    "lint-staged": "^12.1.4",
+    "mini-css-extract-plugin": "2.4.5",
+    "prettier": "2.7.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
+  },
+  "license": "ISC",
+  "description": "",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js}": "eslint --fix",
+    "*.{css}": "stylelint --fix"
+  }
+}
