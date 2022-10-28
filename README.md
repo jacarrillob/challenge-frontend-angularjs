@@ -18,4 +18,4 @@ Para crear una, tarea son necesarios los siguentes campos:
     -   Prioridad (requerido y con valores posibiles: low, medium, high)
     -   Descripción (opcional)
 
-[https://www.figma.com/file/kUcxlzTjrib6JPptcKFk6S/Frontend-(angularjs)](<https://www.figma.com/file/kUcxlzTjrib6JPptcKFk6S/Frontend-(angularjs)>)
+[https://www.figma.com/proto/kUcxlzTjrib6JPptcKFk6S/Frontend-(angularjs)?node-id=1%3A81&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A81](<https://www.figma.com/proto/kUcxlzTjrib6JPptcKFk6S/Frontend-(angularjs)?node-id=1%3A81&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A81>)
