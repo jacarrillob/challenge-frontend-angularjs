@@ -1,20 +1,27 @@
 import angular from 'angular';
-import TodoListComponent from './todos-list.component.html';
+import TodoList from './todos-list.component.html';
 
-angular.module('carecloud').component('todoListComponent', {
+angular.module('carecloud').component('todoList', {
   transclude: true,
   bindings: {},
-  template: TodoListComponent,
-  controller: TodoListComponentController
+  template: TodoList,
+  controller: TodoListController
 });
 
-function TodoListComponentController($scope, TodosService) {
+function TodoListController($scope, TodosService) {
   const $ctrl = this;
-  let myTask = 'myTask';
 
-  $scope.todoList = TodosService.getAllTodos(myTask);
+  $scope.todoList = [];
+
+  $ctrl.$onInit = function () {
+    $ctrl.getAllTodos();
+  };
 
   $ctrl.createTask = function () {
     location.href = 'http://localhost:3000/#!/todos/create';
+  };
+
+  $ctrl.getAllTodos = function () {
+    $scope.todoList = TodosService.getAllTodos();
   };
 }

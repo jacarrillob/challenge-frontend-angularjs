@@ -1,17 +1,15 @@
 import angular from 'angular';
-import TodoCreateComponent from './todos.form.component.html';
+import TodoCreate from './todos.form.component.html';
 
-angular.module('carecloud').component('todoCreateComponent', {
+angular.module('carecloud').component('todoCreate', {
   transclude: true,
   bindings: {},
-  template: TodoCreateComponent,
-  controller: TodoCreateComponentController
+  template: TodoCreate,
+  controller: TodoCreateController
 });
 
-function TodoCreateComponentController($scope, TodosService) {
+function TodoCreateController(TodosService) {
   const $ctrl = this;
-
-  let myTask = 'myTask';
 
   $ctrl.form = {
     task: null,
@@ -21,24 +19,7 @@ function TodoCreateComponentController($scope, TodosService) {
   };
 
   $ctrl.handleSubmit = function () {
-    let task = $ctrl.form.task;
-    let priority = $ctrl.form.priority;
-    if (!task) return;
-    if (!priority) return;
-
-    $scope.todoListFromLocalStorage = TodosService.getAllTodos(myTask);
-
-    if (!$scope.todoListFromLocalStorage) {
-      $scope.todoListFromLocalStorage = [];
-    } else {
-      $scope.todoListFromLocalStorage = TodosService.getAllTodos(myTask);
-    }
-
-    $scope.myTask = createPayload();
-
-    $scope.todoListFromLocalStorage.push($scope.myTask);
-
-    TodosService.addTodo(myTask, $scope.todoListFromLocalStorage);
+    TodosService.addTodo($ctrl.form);
 
     location.href = 'http://localhost:3000/#!/todos';
   };
@@ -46,15 +27,4 @@ function TodoCreateComponentController($scope, TodosService) {
   $ctrl.cancel = function () {
     location.href = 'http://localhost:3000/#!/todos';
   };
-
-  function createPayload() {
-    const payload = {};
-
-    payload.task = $ctrl.form.task;
-    payload.priority = $ctrl.form.priority;
-    payload.description = $ctrl.form.description;
-    payload.done = $ctrl.form.done;
-
-    return payload;
-  }
 }

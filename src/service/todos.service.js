@@ -1,25 +1,35 @@
 import angular from 'angular';
 
 angular.module('carecloud').service('TodosService', TodosService);
+
+const key = 'myTask';
+
 function TodosService() {
-  this.getAllTodos = function (key) {
-    return JSON.parse(localStorage.getItem(key));
+  this.saveTodos = function (todos) {
+    localStorage.setItem(key, JSON.stringify(todos));
   };
 
-  this.deleteTodo = function (key, element) {
-    let array = JSON.parse(localStorage.getItem(key));
-    array.splice(element, 1);
-    localStorage.setItem(key, JSON.stringify(array));
+  this.getAllTodos = function () {
+    const todos = localStorage.getItem(key) || '[]';
+    return JSON.parse(todos);
   };
 
-  this.addTodo = function (key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
+  this.deleteTodo = function (element) {
+    const todos = this.getAllTodos();
+    todos.splice(element, 1);
+    this.saveTodos(todos);
   };
 
-  this.todoDone = function (key, element, value) {
-    let array = JSON.parse(localStorage.getItem(key));
-    array[element].done = value;
-    localStorage.setItem(key, JSON.stringify(array));
+  this.addTodo = function (todo) {
+    const todos = this.getAllTodos();
+    todos.push(todo);
+    this.saveTodos(todos);
+  };
+
+  this.todoDone = function (element, value) {
+    const todos = this.getAllTodos();
+    todos[element].done = value;
+    this.saveTodos(todos);
   };
 
   return this;
