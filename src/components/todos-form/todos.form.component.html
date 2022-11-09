@@ -1,0 +1,54 @@
+<div class="container mx-auto w-1/2 mt-10 p-10">
+  <div class="flex justify-between pb-4 items-center">
+    <h1 class="text-xl font-bold">New Todos</h1>
+    <button class="text-white rounded-lg p-2 pl-5 pr-5 bg-rose-500" ng-click="$ctrl.cancel()">Lista</button>
+  </div>
+  <form class="bg-white p-10 rounded-lg" name="todoForm" ng-submit="todoForm.$valid && $ctrl.handleSubmit()">
+    <fieldset>
+      <label class="text-base font-bold block" for="task">Task:</label>
+      <input
+        class="placeholder:text-gray-400 block bg-white w-full border border-gray-300 rounded-md p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        id="task" name="task" type="text" ng-model="$ctrl.form.task" form="todoForm" placeholder="Todo..." required
+        ng-maxlength="100" ng-class="{
+          'border-red-500': (todoForm.task.$error.required && todoForm.task.$touched)
+        }" />
+
+      <span class="text-red-500" ng-if="todoForm.task.$error.required && todoForm.task.$touched"> El campos es requerido
+      </span>
+      <span class="text-red-500" ng-if="todoForm.task.$error.maxlength">
+        El campo no debe superar los 100 carácteres
+      </span>
+    </fieldset>
+
+    <fieldset>
+      <label class="text-base font-bold block pt-4" for="priority">Priority:</label>
+      <select name="priority" id="priority" ng-model="$ctrl.form.priority" form="todoForm"
+        class="placeholder:text-gray-400 block bg-white w-full border border-gray-300 rounded-md p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        required ng-class="{
+          'border-red-500': (todoForm.priority.$error.required && todoForm.priority.$touched)
+        }">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <span class="text-red-500" ng-if="todoForm.priority.$error.required && todoForm.priority.$touched"> El campos es
+        requerido </span>
+    </fieldset>
+
+    <fieldset>
+      <label class="text-base font-bold block pt-4" for="description">Description:</label>
+      <textarea
+        class="placeholder:text-gray-400 block bg-white w-full border border-gray-300 rounded-md p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        id="description" rows="3" name="description" form="todoForm" ng-model="$ctrl.form.description"
+        placeholder="Write with a task to be done"></textarea>
+    </fieldset>
+
+    <div class="grid grid-cols-2 gap-4 pt-10">
+      <button class="text-rose-500 rounded-lg bg-white border p-2 border-rose-500" ng-click="$ctrl.cancel()">
+        Cancel
+      </button>
+      <button class="text-white rounded-lg p-2 bg-rose-500" type="submit">Save</button>
+    </div>
+  </form>
+</div>

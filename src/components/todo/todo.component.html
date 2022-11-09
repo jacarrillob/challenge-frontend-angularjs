@@ -1,0 +1,26 @@
+<li class="list-none">
+  <div class="flex flex justify-between items-center">
+    <div>
+      <input type="checkbox" id="todo-{{ $ctrl.index }}" ng-model="$ctrl.todo.done"
+        ng-change="$ctrl.change($ctrl.index)" ng-checked="$ctrl.todo.done" />
+      <label for="complete" class="pl-1" ng-class="{'deleted': $ctrl.todo.done}"> {{ $ctrl.todo.task }}
+      </label>
+      <span ng-if="$ctrl.todo.priority === 'Low'"
+        class="text-xs text-teal-500 font-bold bg-teal-100 ml-2 rounded-md px-2 border border-teal-500">
+        {{ $ctrl.todo.priority }}
+      </span>
+      <span ng-if="$ctrl.todo.priority === 'Medium'"
+        class="text-xs text-violet-500 font-bold bg-violet-100 ml-2 rounded-md px-2 border border-violet-500">
+        {{ $ctrl.todo.priority }}
+      </span>
+      <span ng-if="$ctrl.todo.priority === 'High'"
+        class="text-xs text-rose-500 font-bold bg-rose-100 ml-2 rounded-md px-2 border border-rose-500">
+        {{ $ctrl.todo.priority }}
+      </span>
+    </div>
+    <div>
+      <button class="text-rose-500 font-bold rounded-lg p-2 bg-white"
+        ng-click="$ctrl.deleteTodo($ctrl.index)">X</button>
+    </div>
+  </div>
+</li>

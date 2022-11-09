@@ -1,0 +1,22 @@
+<div class="container mx-auto w-1/2 mt-10 p-10">
+  <div class="flex justify-between pb-6 items-center">
+    <h1 class="text-xl font-bold">Todos</h1>
+    <button class="text-white rounded-lg p-2 pl-5 pr-5 bg-rose-500" ng-click="$ctrl.createTask()">New Task</button>
+  </div>
+  <div class="bg-white p-4 rounded-lg mb-5" ng-if="todoList" ng-repeat="todo in todoList">
+    <todo-component todo="todo" index="$index" />
+  </div>
+
+
+  <div class="w-96 mx-auto bg-gray-200 p-4 text-neutral-400 rounded-lg mt-7"
+    ng-if="todoList.length === 0 || todoList === null">
+    <div class="pt-10">
+      <img class="w-24 h-24 mx-auto opacity-40" src="../../assets/write.svg" alt="write">
+    </div>
+    <div class="pt-5 text-center pb-5">
+      You don't have any task in your list yet
+    </div>
+  </div>
+
+
+</div>
