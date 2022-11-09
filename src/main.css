@@ -1,4 +1,13 @@
 html,
 body {
   font-family: Ubuntu, sans-serif;
+  background-color: #f3f4f6;
+}
+.deleted {
+  text-decoration: line-through;
+}
+
+.per {
+  color: bisque;
+  font-size: 19px;
 }
